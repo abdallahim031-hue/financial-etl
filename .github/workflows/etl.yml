@@ -12,8 +12,9 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install pandas numpy yfinance requests lxml
-      - run: python run_pipeline.py
+      -       - run: python run_pipeline.py
+        working-directory: financial-etl
       - uses: actions/upload-artifact@v4
         with:
           name: warehouse
-          path: data/warehouse.db
+          path: financial-etl/data/warehouse.db
