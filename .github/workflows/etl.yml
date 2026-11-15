@@ -1,8 +1,8 @@
 name: daily-etl
 on:
   schedule:
-    - cron: "0 22 * * 1-5"    # 22h UTC, du lundi au vendredi
-  workflow_dispatch:           # permet de lancer à la main
+    - cron: "0 22 * * 1-5"
+  workflow_dispatch:
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -12,9 +12,9 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install pandas numpy yfinance requests lxml
-      -       - run: python run_pipeline.py
-        working-directory: financial-etl
+      - run: python run_pipeline.py
       - uses: actions/upload-artifact@v4
         with:
           name: warehouse
-          path: financial-etl/data/warehouse.db
+          path: data/warehouse.db
+          
